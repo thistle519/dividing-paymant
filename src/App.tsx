@@ -14,16 +14,18 @@ function App() {
       myTotalAmount += pr.price / 2;
     }
   });
+
   const convertPayerToJa = (payer: Payer): String => {
     if (payer === "me") return "私";
     if (payer === "both") return "どっちも";
     if (payer === "else") return "あいて";
     throw new Error();
   };
+
   return (
     <div className="flex justify-center p-4">
-      <div className="relative h-screen w-screen">
-        <div className="fixed inset-x-0 bottom-0">
+      <div className="h-screen w-screen">
+        <div className="fixed inset-x-0 bottom-0 px-4">
           <Form
             setPaymentRecords={setPaymentRecords}
             paymentRecords={paymentRecords}

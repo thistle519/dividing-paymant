@@ -18,46 +18,52 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           ]);
           e.preventDefault();
         }}
+        className="bg-white"
       >
-        {/* {JSON.stringify(paymentRecords, null, 2)} */}
-        <br />
-        <label htmlFor="me">わたし</label>
-        <input
-          type="radio"
-          name="payer"
-          value="me"
-          id="me"
-          onChange={(e) => setInputPayer(e.target.value as "me")}
-        />
-        <label htmlFor="both">ふたり</label>
-        <input
-          type="radio"
-          name="payer"
-          value="both"
-          id="both"
-          onChange={(e) => setInputPayer(e.target.value as "both")}
-        />
-        <label htmlFor="else">あいて</label>
-        <input
-          type="radio"
-          name="payer"
-          value="else"
-          id="else"
-          onChange={(e) => setInputPayer(e.target.value as "else")}
-        />
-        <input
-          type="number"
-          onChange={(e) => {
-            setInputPrice(parseInt(e.target.value));
-          }}
-        />
-        <button
-        // onClick={() => {
-        //   setPrices([...prices, inputPrice]);
-        // }}
-        >
-          追加
-        </button>
+        <div className="flex flex-col">
+          <div className="flex  justify-around">
+            <div>
+              <input
+                type="radio"
+                name="payer"
+                value="me"
+                id="me"
+                onChange={(e) => setInputPayer(e.target.value as "me")}
+              />
+              <label htmlFor="me">わたし</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="payer"
+                value="both"
+                id="both"
+                onChange={(e) => setInputPayer(e.target.value as "both")}
+              />
+              <label htmlFor="both">ふたり</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="payer"
+                value="else"
+                id="else"
+                onChange={(e) => setInputPayer(e.target.value as "else")}
+              />
+              <label htmlFor="else">あいて</label>
+            </div>
+          </div>
+          <input
+            type="number"
+            onChange={(e) => {
+              setInputPrice(parseInt(e.target.value));
+            }}
+            className="p-2 border-2 rounded-md"
+          />
+          <button className="p-2 border-2 rounded-md bg-amber-300 text-white">
+            追加
+          </button>
+        </div>
       </form>
     </>
   );
