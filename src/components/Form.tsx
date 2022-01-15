@@ -55,15 +55,27 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           <button className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white">
             追加
           </button>
+          <div className="flex justify-items-stretch">
           <button
-            className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white"
+            className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white flex-1"
             type="button"
             onClick={() => {
-              setInputPrice(inputPrice * TAXRATE);
+              setInputPrice(inputPrice * TAXRATE.normal);
             }}
           >
-            税金
+            普通税率(×1.10)
           </button>
+          <button
+            className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white flex-1"
+            type="button"
+            onClick={() => {
+              setInputPrice(inputPrice * TAXRATE.reduced)
+            }}
+          >
+            軽減税率(×1.08)
+          </button> 
+
+          </div>
         </div>
       </form>
     </>
