@@ -6,15 +6,18 @@ export type Payer = "me" | "both" | "else";
 export type PaymentRecord = { payer: Payer; price: number };
 function App() {
   const [paymentRecords, setPaymentRecords] = useState<PaymentRecord[]>([]);
-  let myTotalAmount = 0;
-  paymentRecords.forEach((pr) => {
-    if (pr.payer === "me") {
-      myTotalAmount += pr.price;
-    }
-    if (pr.payer === "both") {
-      myTotalAmount += pr.price / 2;
-    }
-  });
+  const myTotalAmount = paymentRecords.length !== 0 ?
+    paymentRecords.map((pr) => {
+      if (pr.payer === "me") {
+        return pr.price;
+      }
+      if (pr.payer === "both") {
+        return pr.price / 2;
+      }
+      return 0;
+    })
+    .reduce((prev, current) => prev + current) : 0
+
   return (
     <div className="flex justify-center px-4">
       <div className="w-screen">
