@@ -9,20 +9,21 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
   const [inputPrice, setInputPrice] = useState(0);
   const [inputPayer, setInputPayer] = useState<Payer>("both");
   const ref = useRef<HTMLInputElement>(null!);
-  const addPaymentRecord = () => {
+
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     setPaymentRecords([
       ...paymentRecords,
       { payer: inputPayer, price: inputPrice },
     ]);
     setInputPrice(0);
+    ref.current.focus();
+    e.preventDefault();
   };
 
   return (
     <form
       onSubmit={(e) => {
-        addPaymentRecord();
-        ref.current.focus();
-        e.preventDefault();
+        onFormSubmit(e);
       }}
       className="bg-white"
     >
