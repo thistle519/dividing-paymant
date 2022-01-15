@@ -21,46 +21,35 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
         className="bg-white"
       >
         <div className="flex flex-col">
-          <div className="flex  justify-around">
-            <div>
-              <input
-                type="radio"
-                name="payer"
-                value="me"
-                id="me"
-                onChange={(e) => setInputPayer(e.target.value as "me")}
-              />
-              <label htmlFor="me">わたし</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="payer"
-                value="both"
-                id="both"
-                onChange={(e) => setInputPayer(e.target.value as "both")}
-              />
-              <label htmlFor="both">ふたり</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="payer"
-                value="else"
-                id="else"
-                onChange={(e) => setInputPayer(e.target.value as "else")}
-              />
-              <label htmlFor="else">あいて</label>
-            </div>
+          <div className="flex justify-around my-1">
+            {[
+              { key: "me", label: "わたし" },
+              { key: "both", label: "ふたり" },
+              { key: "else", label: "あいて" },
+            ].map((payerObj) => (
+              <div>
+                <input
+                  type="radio"
+                  name="payer"
+                  value={payerObj.key}
+                  id={payerObj.key}
+                  checked={inputPayer === payerObj.key}
+                  onChange={(e) =>
+                    setInputPayer(e.target.value as "me" | "both" | "else")
+                  }
+                />
+                <label htmlFor={payerObj.key}>{payerObj.label}</label>
+              </div>
+            ))}
           </div>
           <input
             type="number"
             onChange={(e) => {
               setInputPrice(parseInt(e.target.value));
             }}
-            className="p-2 border-2 rounded-md"
+            className="p-2 border-2 rounded-md my-1"
           />
-          <button className="p-2 border-2 rounded-md bg-amber-300 text-white">
+          <button className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white">
             追加
           </button>
         </div>
