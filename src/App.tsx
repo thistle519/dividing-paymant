@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const [prices, setPrices] = useState<number[]>([]);
+  const [inputPrice, setInputPrice] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <input
+        onChange={(e) => {
+          setInputPrice(parseInt(e.target.value));
+        }}
+      ></input>
+      <button
+        onClick={() => {
+          setPrices([...prices,inputPrice]);
+        }}
+      ></button>
+      <p>{prices}</p>
+    </>
   );
 }
 
