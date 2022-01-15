@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Form from "./components/Form";
+import RecordsList from "./RecordsList";
 export type Payer = "me" | "both" | "else";
 
 export type PaymentRecord = { payer: Payer; price: number };
@@ -14,14 +15,6 @@ function App() {
       myTotalAmount += pr.price / 2;
     }
   });
-
-  const convertPayerToJa = (payer: Payer): String => {
-    if (payer === "me") return "私";
-    if (payer === "both") return "どっちも";
-    if (payer === "else") return "あいて";
-    throw new Error();
-  };
-
   return (
     <div className="flex justify-center px-4">
       <div className="w-screen">
@@ -29,23 +22,10 @@ function App() {
           <p className="my-4 ">自分が払うべきお金は{myTotalAmount}円です</p>
         </div>
         <div className="h-full mt-14 mb-52">
-          <ul>
-            {paymentRecords.map((pr, prindex) => (
-              <li key={`${pr.price}+${prindex}`}>
-                {pr.price}円 {convertPayerToJa(pr.payer)}
-                <button
-                  type="button"
-                  onClick={() => {
-                    setPaymentRecords(
-                      paymentRecords.filter((_, index) => index !== prindex)
-                    );
-                  }}
-                >
-                  ×
-                </button>
-              </li>
-            ))}
-          </ul>
+          <RecordsList
+            setPaymentRecords={setPaymentRecords}
+            paymentRecords={paymentRecords}
+          />
         </div>
         <div className="fixed inset-x-0 bottom-0 px-4">
           <Form
