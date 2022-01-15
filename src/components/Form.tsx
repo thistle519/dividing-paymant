@@ -12,13 +12,14 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
   const ref = useRef<HTMLInputElement>(null!);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setInputPrice(0);
+    if (inputPrice <= 0) return;
     setPaymentRecords([
       ...paymentRecords,
       { payer: inputPayer, price: inputPrice },
     ]);
-    setInputPrice(0);
     ref.current.focus();
-    e.preventDefault();
   };
 
   return (
