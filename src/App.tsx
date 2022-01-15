@@ -23,20 +23,24 @@ function App() {
   };
 
   return (
-    <div className="flex justify-center p-4">
-      <div className="h-screen w-screen">
+    <div className="flex justify-center px-4">
+      <div className="w-screen">
+        <div className="fixed top-0 h-14 bg-white">
+          <p className="my-4 ">自分が払うべきお金は{myTotalAmount}です</p>
+        </div>
+        <div className="h-full mt-14 mb-24">
+          {paymentRecords.map((pr) => (
+            <li key={pr.price}>
+              {pr.price}円 {convertPayerToJa(pr.payer)}
+            </li>
+          ))}
+        </div>
         <div className="fixed inset-x-0 bottom-0 px-4">
           <Form
             setPaymentRecords={setPaymentRecords}
             paymentRecords={paymentRecords}
           />
         </div>
-        {paymentRecords.map((pr) => (
-          <li key={pr.price}>
-            {pr.price}円 {convertPayerToJa(pr.payer)}
-          </li>
-        ))}
-        <p>自分が払うべきお金は{myTotalAmount}です</p>
       </div>
     </div>
   );
