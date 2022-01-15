@@ -32,7 +32,7 @@ function App() {
           />
         </div>
         {paymentRecords.map((pr) => (
-          <li>
+          <li key={pr.price}>
             {pr.price}円 {convertPayerToJa(pr.payer)}
           </li>
         ))}

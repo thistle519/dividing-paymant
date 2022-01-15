@@ -28,7 +28,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
               { key: "both", label: "ふたり" },
               { key: "else", label: "あいて" },
             ].map((payerObj) => (
-              <div>
+              <div key={payerObj.key}>
                 <input
                   type="radio"
                   name="payer"
