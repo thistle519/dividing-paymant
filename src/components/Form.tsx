@@ -21,8 +21,6 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
     <form
       onSubmit={(e) => {
         addPaymentRecord();
-        console.log( ref.current);
-        
         ref.current.focus();
         e.preventDefault();
       }}
