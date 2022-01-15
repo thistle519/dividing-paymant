@@ -55,7 +55,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           <button className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white">
             追加
           </button>
-          <div className="flex justify-items-stretch">
+          <div className="flex justify-items-stretch mb-5">
           <button
             className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white flex-1"
             type="button"
