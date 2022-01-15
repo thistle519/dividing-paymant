@@ -7,6 +7,15 @@ function App() {
   const [paymentRecords, setPaymentRecords] = useState<PaymentRecord[]>([]);
   const [inputPrice, setInputPrice] = useState(0);
   const [inputPayer, setInputPayer] = useState<Payer>("both");
+  let  myTotalAmount = 0
+  paymentRecords.forEach(pr => {
+    if (pr.payer === 'me'){
+      myTotalAmount += pr.price
+    } 
+    if(pr.payer === 'both'){
+      myTotalAmount += pr.price/2
+    }
+  });
   const convertPayerToJa = (payer: Payer):String =>{
     if (payer === 'me') return '私'
     if (payer === 'both') return 'どっちも'
@@ -67,8 +76,9 @@ function App() {
       {paymentRecords.map((pr) => (
         <li>{pr.price}円  {convertPayerToJa(pr.payer)}</li>
       ))}
+      <p>自分が払うべきお金は{myTotalAmount}です</p>
     </>
   );
-}
+} 
 
 export default App;
