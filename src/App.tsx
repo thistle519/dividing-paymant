@@ -29,13 +29,13 @@ function App() {
           <p className="my-4 ">自分が払うべきお金は{myTotalAmount}です</p>
         </div>
         <div className="h-full mt-14 mb-24">
-          {paymentRecords.map((pr) => (
+          {paymentRecords.map((pr, prindex) => (
             <li key={pr.price}>
-              {pr.price}円 {convertPayerToJa(pr.payer)}{" "}
+              {pr.price}円 {convertPayerToJa(pr.payer)}
               <button
                 type="button"
                 onClick={() => {
-                  setPaymentRecords(paymentRecords.filter((_, index)=>index!==paymentRecords.indexOf(pr)));
+                  setPaymentRecords(paymentRecords.filter((_, index)=>index!==prindex));
                 }}
               >
                 ×
