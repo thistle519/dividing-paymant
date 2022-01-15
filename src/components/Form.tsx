@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Payer, PaymentRecord } from "../App";
+import { TAXRATE } from "../const";
 
 type FormProps = {
   paymentRecords: PaymentRecord[];
@@ -45,7 +46,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           </div>
           <input
             type="number"
-            value={inputPrice !== 0 ? inputPrice : ''}
+            value={inputPrice !== 0 ? inputPrice : ""}
             onChange={(e) => {
               setInputPrice(parseInt(e.target.value));
             }}
@@ -53,6 +54,15 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           />
           <button className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white">
             追加
+          </button>
+          <button
+            className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white"
+            type="button"
+            onClick={() => {
+              setInputPrice(inputPrice * TAXRATE);
+            }}
+          >
+            税金
           </button>
         </div>
       </form>
