@@ -7,6 +7,12 @@ function App() {
   const [paymentRecords, setPaymentRecords] = useState<PaymentRecord[]>([]);
   const [inputPrice, setInputPrice] = useState(0);
   const [inputPayer, setInputPayer] = useState<Payer>("both");
+  const convertPayerToJa = (payer: Payer):String =>{
+    if (payer === 'me') return '私'
+    if (payer === 'both') return 'どっちも'
+    if (payer === 'else') return 'あいて'
+    throw new Error()
+  }
   return (
     <>
       <form
@@ -59,7 +65,7 @@ function App() {
         </button>
       </form>
       {paymentRecords.map((pr) => (
-        <li>{pr.price}円{pr.payer}</li>
+        <li>{pr.price}円  {convertPayerToJa(pr.payer)}</li>
       ))}
     </>
   );
