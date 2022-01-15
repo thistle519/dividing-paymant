@@ -16,6 +16,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
             ...paymentRecords,
             { payer: inputPayer, price: inputPrice },
           ]);
+          setInputPrice(0);
           e.preventDefault();
         }}
         className="bg-white"
@@ -44,6 +45,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           </div>
           <input
             type="number"
+            value={inputPrice !== 0 ? inputPrice : ''}
             onChange={(e) => {
               setInputPrice(parseInt(e.target.value));
             }}
