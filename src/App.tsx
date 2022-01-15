@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import Form from "./components/Form";
 export type Payer = "me" | "both" | "else";
 
