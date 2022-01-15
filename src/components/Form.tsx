@@ -1,5 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 import { Payer, PaymentRecord } from "../App";
+import { TAXRATE } from "../const";
 
 type FormProps = {
   paymentRecords: PaymentRecord[];
@@ -61,6 +62,26 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
         <button className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white">
           追加
         </button>
+        <div className="flex justify-items-stretch mb-5">
+          <button
+            className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white flex-1"
+            type="button"
+            onClick={() => {
+              setInputPrice(inputPrice * TAXRATE.normal);
+            }}
+          >
+            普通税率(×1.10)
+          </button>
+          <button
+            className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white flex-1"
+            type="button"
+            onClick={() => {
+              setInputPrice(inputPrice * TAXRATE.reduced);
+            }}
+          >
+            軽減税率(×1.08)
+          </button>
+        </div>
       </div>
     </form>
   );
