@@ -21,18 +21,22 @@ function App() {
     throw new Error();
   };
   return (
-    <>
-      <Form
-        setPaymentRecords={setPaymentRecords}
-        paymentRecords={paymentRecords}
-      />
-      {paymentRecords.map((pr) => (
-        <li>
-          {pr.price}円 {convertPayerToJa(pr.payer)}
-        </li>
-      ))}
-      <p>自分が払うべきお金は{myTotalAmount}です</p>
-    </>
+    <div className="flex justify-center p-4">
+      <div className="relative h-screen w-screen">
+        <div className="fixed inset-x-0 bottom-0">
+          <Form
+            setPaymentRecords={setPaymentRecords}
+            paymentRecords={paymentRecords}
+          />
+        </div>
+        {paymentRecords.map((pr) => (
+          <li>
+            {pr.price}円 {convertPayerToJa(pr.payer)}
+          </li>
+        ))}
+        <p>自分が払うべきお金は{myTotalAmount}です</p>
+      </div>
+    </div>
   );
 }
 
