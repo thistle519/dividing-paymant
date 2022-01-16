@@ -43,9 +43,10 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
                 value={payerObj.key}
                 id={payerObj.key}
                 checked={inputPayer === payerObj.key}
-                onChange={(e) =>
-                  setInputPayer(e.target.value as "me" | "both" | "else")
-                }
+                onChange={(e) => {
+                  setInputPayer(e.target.value as "me" | "both" | "else");
+                  ref.current.focus();
+                }}
               />
               <label htmlFor={payerObj.key}>{payerObj.label}</label>
             </div>
@@ -69,6 +70,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
             type="button"
             onClick={() => {
               setInputPrice(inputPrice * TAXRATE.normal);
+              ref.current.focus();
             }}
           >
             普通税率(×1.10)
@@ -78,6 +80,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
             type="button"
             onClick={() => {
               setInputPrice(inputPrice * TAXRATE.reduced);
+              ref.current.focus();
             }}
           >
             軽減税率(×1.08)
