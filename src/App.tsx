@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "./components/Form";
 import RecordsList from "./components/RecordsList";
+import Summary from "./components/Summary";
 export type Payer = "me" | "both" | "else";
 
 export type PaymentRecord = { payer: Payer; price: number };
@@ -26,9 +27,10 @@ function App() {
     <div className="flex justify-center px-4">
       <div className="w-screen">
         <div className="fixed top-0 h-14 bg-white">
-          <p className="my-4 ">
-            自分が払うべきお金は{" "}
-            <span className="font-bold text-lg">{myTotalAmount}</span> 円です
+          <p className="my-4">
+            <Summary
+            myTotalAmount={myTotalAmount}
+            />
           </p>
         </div>
         <div className="h-full mt-14 mb-52">
