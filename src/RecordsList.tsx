@@ -7,17 +7,23 @@ type RecordsListProps = {
 };
 
 const convertPayerToJa = (payer: Payer): String => {
-    if (payer === "me") return "私";
-    if (payer === "both") return "どっちも";
-    if (payer === "else") return "あいて";
-    throw new Error();
-  };
+  if (payer === "me") return "私";
+  if (payer === "both") return "どっちも";
+  if (payer === "else") return "あいて";
+  throw new Error();
+};
 
-const RecordsList: FC<RecordsListProps> = ({setPaymentRecords, paymentRecords}) => {
+const RecordsList: FC<RecordsListProps> = ({
+  setPaymentRecords,
+  paymentRecords,
+}) => {
   return (
     <ul>
       {paymentRecords.map((pr, prindex) => (
-        <li key={`${pr.price}+${prindex}`}>
+        <li
+          key={`${pr.price}+${prindex}`}
+          className="my-2 border-2 p-2 rounded-md"
+        >
           {pr.price}円 {convertPayerToJa(pr.payer)}
           <button
             type="button"
