@@ -56,7 +56,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           type="number"
           value={inputPrice !== 0 ? inputPrice : ""}
           onChange={(e) => {
-            setInputPrice(parseInt(e.target.value));
+            setInputPrice(Math.round(parseInt(e.target.value)));
           }}
           className="p-2 border-2 rounded-md my-1"
           ref={ref}
@@ -69,7 +69,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
             className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white flex-1"
             type="button"
             onClick={() => {
-              setInputPrice(inputPrice * TAXRATE.normal);
+              setInputPrice(Math.round(inputPrice * TAXRATE.normal));
               ref.current.focus();
             }}
           >
@@ -79,7 +79,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
             className="p-2 my-1 border-2 rounded-md bg-gray-600 text-white flex-1"
             type="button"
             onClick={() => {
-              setInputPrice(inputPrice * TAXRATE.reduced);
+              setInputPrice(Math.round(inputPrice * TAXRATE.reduced));
               ref.current.focus();
             }}
           >

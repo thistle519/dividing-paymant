@@ -6,7 +6,7 @@ export type Payer = "me" | "both" | "else";
 export type PaymentRecord = { payer: Payer; price: number };
 function App() {
   const [paymentRecords, setPaymentRecords] = useState<PaymentRecord[]>([]);
-  const myTotalAmount =
+  const myTotalAmount = Math.round(
     paymentRecords.length !== 0
       ? paymentRecords
           .map((pr) => {
@@ -19,7 +19,8 @@ function App() {
             return 0;
           })
           .reduce((prev, current) => prev + current)
-      : 0;
+      : 0
+  );
 
   return (
     <div className="flex justify-center px-4">
