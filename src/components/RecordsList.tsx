@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Payer, PaymentRecord } from "./App";
+import { Payer, PaymentRecord } from "../App";
+import "./fade.css";
 
 type RecordsListProps = {
   paymentRecords: PaymentRecord[];
@@ -22,7 +23,9 @@ const RecordsList: FC<RecordsListProps> = ({
       {paymentRecords.map((pr, prindex) => (
         <li
           key={`${pr.price}+${prindex}`}
-          className="my-2 border-2 p-2 rounded-md"
+          className={`my-2 border-2 p-2 rounded-md transition-all ${
+            prindex + 1 === paymentRecords.length ? "fade-target" : ""
+          }`}
         >
           {pr.price}円 {convertPayerToJa(pr.payer)}
           <button

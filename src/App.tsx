@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Form from "./components/Form";
-import RecordsList from "./RecordsList";
+import RecordsList from "./components/RecordsList";
 export type Payer = "me" | "both" | "else";
 
 export type PaymentRecord = { payer: Payer; price: number };
