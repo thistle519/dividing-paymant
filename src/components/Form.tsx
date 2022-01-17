@@ -59,9 +59,13 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
             setInputPrice(Math.round(parseInt(e.target.value)));
           }}
           className="p-2 border-2 rounded-md my-1"
+          aria-label="金額"
           ref={ref}
         />
-        <button className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white">
+        <button
+          className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white"
+          aria-label="データを追加"
+        >
           追加
         </button>
         <div className="flex justify-items-stretch mb-5">
@@ -72,6 +76,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
               setInputPrice(Math.round(inputPrice * TAXRATE.normal));
               ref.current.focus();
             }}
+            aria-label="普通税率を追加"
           >
             普通税率(×1.10)
           </button>
@@ -82,6 +87,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
               setInputPrice(Math.round(inputPrice * TAXRATE.reduced));
               ref.current.focus();
             }}
+            aria-label="軽減税率を追加"
           >
             軽減税率(×1.08)
           </button>
