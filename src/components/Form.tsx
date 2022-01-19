@@ -58,6 +58,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           onChange={(e) => {
             setInputPrice(Math.round(parseInt(e.target.value)));
           }}
+          placeholder="150"
           className="p-2 border-2 rounded-md my-1"
           aria-label="金額"
           ref={ref}
