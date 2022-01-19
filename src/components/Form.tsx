@@ -52,17 +52,24 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
             </div>
           ))}
         </div>
-        <input
-          type="number"
-          value={inputPrice !== 0 ? inputPrice : ""}
-          onChange={(e) => {
-            setInputPrice(Math.round(parseInt(e.target.value)));
-          }}
-          placeholder="150"
-          className="p-2 border-2 rounded-md my-1"
-          aria-label="金額"
-          ref={ref}
-        />
+        <div className="flex content-center my-1">
+          <input
+            type="number"
+            value={inputPrice !== 0 ? inputPrice : ""}
+            onChange={(e) => {
+              setInputPrice(Math.round(parseInt(e.target.value)));
+            }}
+            placeholder="150"
+            className="flex-1 p-2 border-2 rounded-l-md border-r-0"
+            aria-label="金額"
+            ref={ref}
+          />
+          <div>
+            <span className="flex-0 py-2 px-4 inline-block align-middle border-2 border-l-0 rounded-r-md">
+              円
+            </span>
+          </div>
+        </div>
         <button
           className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white"
           aria-label="データを追加"
