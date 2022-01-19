@@ -39,7 +39,7 @@ const RecordsList: FC<RecordsListProps> = ({
             ×
           </button>
         </li>
-      ))}
+      )).reverse()}
     </ul>
   );
 };
