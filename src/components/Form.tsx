@@ -71,7 +71,7 @@ const Form: FC<FormProps> = ({ setPaymentRecords, paymentRecords }) => {
           </div>
         </div>
         <button
-          className="p-2 my-1 border-2 rounded-md bg-amber-300 text-white"
+          className="p-2 my-1 border-2 rounded-md bg-amber-400 text-white"
           aria-label="データを追加"
         >
           追加
